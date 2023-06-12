@@ -9,11 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Response;
-
 import java.util.ArrayList;
 
-public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adapter.MyClass>
+public class RecyclerView_Adapter_2 extends RecyclerView.Adapter<RecyclerView_Adapter_2.MyClass>
 {
 
     Context context;
@@ -21,16 +19,15 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
     ArrayList<DataModel.Address> arrayListAddressModel;
     ArrayList<DataModel.Company> arrayListCompanyModel;
 
-    public RecyclerView_Adapter(Context context, ArrayList<DataModel> arrayListDataModel,
-                                ArrayList<DataModel.Address> arrayListAddressModel,
-                                ArrayList<DataModel.Company> arrayListCompanyModel)
+    public RecyclerView_Adapter_2(MainActivity2 context
+                                    , ArrayList<DataModel> arrayListDataModel
+                                    , ArrayList<DataModel.Address> arrayListAddressModel
+                                    , ArrayList<DataModel.Company> arrayListCompanyModel)
     {
-
         this.arrayListDataModel = arrayListDataModel;
         this.context = context;
         this.arrayListAddressModel = arrayListAddressModel;
         this.arrayListCompanyModel = arrayListCompanyModel;
-
     }
 
     public class MyClass extends RecyclerView.ViewHolder
@@ -52,13 +49,14 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
 
         }
     }
+
     @NonNull
     @Override
     public MyClass onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_imagepage , parent , false);
+        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_imagepage_2 , parent , false);
 
-        MyClass M = new MyClass(view);
+        RecyclerView_Adapter_2.MyClass M = new RecyclerView_Adapter_2.MyClass(view);
 
         return M;
     }
@@ -66,7 +64,6 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
     @Override
     public void onBindViewHolder(@NonNull MyClass holder, int position)
     {
-
         holder.textId.setText("" + arrayListDataModel.get(position).getId());
         holder.textEmail.setText(arrayListDataModel.get(position).getEmail());
         holder.textName.setText(arrayListDataModel.get(position).getName());
@@ -87,11 +84,10 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
 
     }
 
+
     @Override
     public int getItemCount()
     {
         return arrayListDataModel.size();
     }
-
-
 }

@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity
     ArrayList<DataModel> arrayListDataModel = new ArrayList();
     ArrayList<DataModel.Address> arrayListAddressModel = new ArrayList();
     ArrayList<DataModel.Company> arrayListCompanyModel = new ArrayList();
-
-
     String url;
 
 
@@ -43,17 +41,20 @@ public class MainActivity extends AppCompatActivity
 
         recyclerView = findViewById(R.id.RecyclerViewMai);
 
-        url = " https://jsonplaceholder.typicode.com/users ";    ////   This is for Get API
+        url = " https://jsonplaceholder.typicode.com/users ";
+        ////    https://jsonplaceholder.typicode.com/users      //   This is for Get API  Come From Chrome in
+        //     JSON Placeholder na Search Bar Mathi URL Copy Krel che
 
-        call_API();
+        call_API();    ///    ALT + ENTER and Creat the Method
 
     }
 
+///////////==-->>>   This is CreatedBy call_API  = Alt + Enter    <<<<----======////////////////////////////
+
+
     private void call_API()
     {
-
         RequestQueue queue = Volley.newRequestQueue(this);
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>()
         {
             @Override
@@ -108,11 +109,15 @@ public class MainActivity extends AppCompatActivity
                     throw new RuntimeException(e);
                 }
 
-                RecyclerView_Adapter recyclerView_adapter = new RecyclerView_Adapter(MainActivity.this , arrayListDataModel ,
-                                                                                        arrayListAddressModel , arrayListCompanyModel);
+                RecyclerView_Adapter recyclerView_adapter = new RecyclerView_Adapter(MainActivity.this
+                                                                                            , arrayListDataModel
+                                                                                            , arrayListAddressModel
+                                                                                            , arrayListCompanyModel);
                 recyclerView.setAdapter(recyclerView_adapter);
 
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this , RecyclerView.VERTICAL , false);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this
+                                                                                        , RecyclerView.VERTICAL
+                                                                                        , false);
                 recyclerView.setLayoutManager(linearLayoutManager);
             }
 
@@ -127,4 +132,5 @@ public class MainActivity extends AppCompatActivity
             queue.add(stringRequest);
 
     }
+
 }
